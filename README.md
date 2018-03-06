@@ -1,2 +1,3 @@
-# test-serverless
-Serverless Test app 
+# Serverless Testing
+
+Portfolio app - React JS
