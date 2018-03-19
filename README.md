@@ -1,3 +1,4 @@
 # Serverless Testing
 
-Portfolio app - React JS
+Portfolio app
+AWS services and ReactJS
