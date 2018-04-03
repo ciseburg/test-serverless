@@ -15,7 +15,7 @@ def lambda_handler(event, context):
             "objectKey": 'kiranbuild.zip'
         }
         
-        job = event.get("Codepipeline.job")
+        job = event.get("CodePipeline.job")
 
         if job:
             for artifact in job["data"]["inputArtifacts"]:
