@@ -8,6 +8,7 @@ def lambda_handler(event, context):
     
     s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
     sns = boto3.resource('sns')
+    topic = sns.Topic('arn:aws:sns:us-east-1:290093585298:deployPortfolioTopic')
     
     try:
         location = {
@@ -19,12 +20,10 @@ def lambda_handler(event, context):
 
         if job:
             for artifact in job["data"]["inputArtifacts"]:
-                if artifact["name"] == "MyAppBuild":
+                if artifact[name] == "MyAppBuild":
                     location = artifact["location"]["s3location"]
                    
         print "Building portfolio from: " + str(location)
-        
-        topic = sns.Topic('arn:aws:sns:us-east-1:290093585298:deployPortfolioTopic')
     
         build_bucket = s3.Bucket(location["bucketName"])
         portfolio_bucket = s3.Bucket('kiran.sgaslabs.net')
